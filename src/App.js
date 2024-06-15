@@ -1,18 +1,12 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import {
-  Box,
-  CircularProgress,
-  Container,
-  ImageList,
-  ImageListItem,
-  Typography,
-} from "@mui/material";
+import { Box, CircularProgress, Container, Typography } from "@mui/material";
 import Spacer from "components/Spacer";
 import ImageModal from "components/ImageModal";
+import ImageCarousel from "components/ImageCarousel";
+import ImageGrid from "components/ImageGrid";
 import supabase from "supabaseClient";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
+import Page1 from "components/Page1";
 
 const App = () => {
   const [photos, setPhotos] = useState([]);
@@ -56,6 +50,7 @@ const App = () => {
         }}
       >
         <CircularProgress />
+        <Spacer m={2} />
         <Typography>Loading...</Typography>
       </Container>
     );
@@ -83,85 +78,24 @@ const App = () => {
         }}
       />
       <Spacer m={2} />
-      <Carousel
-        showStatus={false}
-        showThumbs={false}
-        infiniteLoop
-        autoPlay
-        interval={3000}
-      >
-        {section1Photos.map((photo) => (
-          <div key={photo.id} onClick={() => handleImageClick(photo)}>
-            <img src={photo.url} alt={photo.description} />
-            <p className="legend">{photo.description}</p>
-          </div>
-        ))}
-      </Carousel>
+      <Page1 />
       <Spacer m={2} />
-      <Carousel
-        showStatus={false}
-        showThumbs={false}
-        infiniteLoop
-        autoPlay
-        interval={3000}
-      >
-        {section2Photos.map((photo) => (
-          <div key={photo.id} onClick={() => handleImageClick(photo)}>
-            <img src={photo.url} alt={photo.description} />
-            <p className="legend">{photo.description}</p>
-          </div>
-        ))}
-      </Carousel>
+      <ImageCarousel
+        photos={section1Photos}
+        handleImageClick={handleImageClick}
+      />
       <Spacer m={2} />
-      <Carousel
-        showStatus={false}
-        showThumbs={false}
-        infiniteLoop
-        autoPlay
-        interval={3000}
-      >
-        {section3Photos.map((photo) => (
-          <div key={photo.id} onClick={() => handleImageClick(photo)}>
-            <img src={photo.url} alt={photo.description} />
-            <p className="legend">{photo.description}</p>
-          </div>
-        ))}
-      </Carousel>
+      <ImageCarousel
+        photos={section2Photos}
+        handleImageClick={handleImageClick}
+      />
       <Spacer m={2} />
-      <ImageList
-        sx={{
-          width: "100%",
-        }}
-        cols={3}
-        gap={1}
-      >
-        {photos.map((photo) => (
-          <ImageListItem key={photo.id} onClick={() => handleImageClick(photo)}>
-            <Box
-              sx={{
-                position: "relative",
-                width: "100%",
-                paddingBottom: "100%", // 1:1 aspect ratio
-              }}
-            >
-              <img
-                src={photo.url}
-                alt={photo.description}
-                loading="lazy"
-                style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  cursor: "pointer", // Add cursor pointer to indicate clickability
-                }}
-              />
-            </Box>
-          </ImageListItem>
-        ))}
-      </ImageList>
+      <ImageCarousel
+        photos={section3Photos}
+        handleImageClick={handleImageClick}
+      />
+      <Spacer m={2} />
+      <ImageGrid photos={photos} handleImageClick={handleImageClick} />
       <ImageModal
         open={modalOpen}
         onClose={handleCloseModal}

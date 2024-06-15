@@ -46,9 +46,74 @@ body {
   background-repeat: repeat; /* 이미지 반복을 방지 */
   background-position: center center; /* 이미지가 중앙에 위치하도록 설정 */
   height: 100vh; /* 전체 화면 높이를 설정 */
+  font-family: 'Pretendard', sans-serif; /* 기본 폰트를 적용 */
 }
 
 /* 기본 legend 스타일을 제거 또는 수정 */
 .carousel .legend {
   display: none; /* 또는 스타일을 수정하려면 다른 스타일 적용 */
+}
+
+/* App.css */
+@font-face {
+  font-family: 'KyoboHandwriting';
+  src: url('/public/fonts/KyoboHandwriting2019.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'OwnglyphMeetme';
+  src: url('/public/fonts/Ownglyph-meetme.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/public/fonts/Pretendard-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/public/fonts/Pretendard-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/public/fonts/Pretendard-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/public/fonts/Pretendard-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/public/fonts/Pretendard-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/public/fonts/Pretendard-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/public/fonts/Pretendard-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/public/fonts/Pretendard-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/public/fonts/Pretendard-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
 }

@@ -1,6 +1,14 @@
 import React from "react";
-import { Dialog, DialogContent, DialogTitle, IconButton } from "@mui/material";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  Box,
+  Typography,
+} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 const ImageModal = ({ open, onClose, image }) => {
   return (
@@ -10,9 +18,9 @@ const ImageModal = ({ open, onClose, image }) => {
           display: "flex",
           justifyContent: "flex-end",
           alignItems: "center",
-          padding: 0, // 기본 패딩을 0으로 설정
-          paddingRight: 2, // 오른쪽 패딩을 2로 설정
-          minHeight: "unset", // 기본 높이 초기화
+          padding: 0,
+          paddingRight: 2,
+          minHeight: "unset",
         }}
       >
         <IconButton
@@ -28,21 +36,60 @@ const ImageModal = ({ open, onClose, image }) => {
         <DialogContent
           sx={{
             display: "flex",
-            justifyContent: "center",
+            flexDirection: "column",
             alignItems: "center",
             padding: 0,
+            width: "100%",
           }}
         >
-          <img
-            src={image.url}
-            alt={image.description}
-            style={{
+          <Box
+            sx={{
               width: "100%",
-              height: "auto",
-              maxHeight: "80vh", // 최대 높이를 화면의 80%로 설정
-              objectFit: "contain", // 이미지를 축소하여 전체가 보이도록 함
+              textAlign: "center",
             }}
-          />
+          >
+            <img
+              src={image.url}
+              alt={image.description}
+              style={{
+                width: "100%",
+                height: "auto",
+                maxHeight: "80vh",
+                objectFit: "contain",
+              }}
+            />
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "100%",
+              padding: 0,
+              marginLeft: 4,
+              marginRight: 4,
+            }}
+          >
+            <IconButton
+              sx={{
+                color: "red",
+              }}
+            >
+              <FavoriteBorderIcon
+                sx={{
+                  fontSize: 20,
+                }}
+              />
+            </IconButton>
+            <Typography
+              sx={{
+                flexGrow: 1,
+                textAlign: "right",
+                alignSelf: "center",
+              }}
+            >
+              {image.description}
+            </Typography>
+          </Box>
         </DialogContent>
       )}
     </Dialog>
