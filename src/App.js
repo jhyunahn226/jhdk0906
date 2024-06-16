@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Divider, Typography } from "@mui/material";
 import { Player } from "@lottiefiles/react-lottie-player";
 import Spacer from "components/Spacer";
 import ImageModal from "components/ImageModal";
@@ -11,7 +11,8 @@ import Page1 from "components/Page1";
 import Page2 from "components/Page2";
 import Page3 from "components/Page3";
 import Page4 from "components/Page4";
-import Footer from "components/footer";
+import Footer from "components/Footer";
+import Sponsor from "components/Sponsor";
 
 const App = () => {
   const [photos, setPhotos] = useState([]);
@@ -130,7 +131,40 @@ const App = () => {
       />
       <Spacer m={3} />
       <Page4 />
-      <Spacer m={3} />
+
+      <Spacer m={4} />
+
+      <Divider
+        sx={{
+          backgroundColor: "black",
+          width: "50px",
+          height: "0.5px",
+        }}
+      />
+      <Spacer m={1} />
+      <Typography sx={{ fontFamily: "OwnglyphMeetme", fontSize: 24 }}>
+        💵 아무리 그래도 💸
+      </Typography>
+      <Typography sx={{ fontFamily: "OwnglyphMeetme", fontSize: 24 }}>
+        마음만으로는-부족해
+      </Typography>
+      <Spacer m={1} />
+      <Sponsor />
+
+      <Spacer m={4} />
+
+      <Divider
+        sx={{
+          backgroundColor: "black",
+          width: "50px",
+          height: "0.5px",
+        }}
+      />
+      <Spacer m={1} />
+      <Typography sx={{ fontFamily: "OwnglyphMeetme", fontSize: 24 }}>
+        GALLERY
+      </Typography>
+      <Spacer m={1} />
       <ImageGrid
         photos={photos}
         handleImageClick={(image, index) =>
