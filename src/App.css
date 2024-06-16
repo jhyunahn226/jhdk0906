@@ -54,6 +54,24 @@ body {
   display: none; /* 또는 스타일을 수정하려면 다른 스타일 적용 */
 }
 
+.carousel .thumbs-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.carousel .thumb {
+  max-width: calc(100% / 6); /* Change the number based on how many thumbs you want to fit */
+  height: auto;
+  box-sizing: border-box;
+  padding: 2px;
+}
+
+.carousel .thumb img {
+  width: 100%;
+  height: auto;
+}
+
+
 /* App.css */
 @font-face {
   font-family: 'KyoboHandwriting';

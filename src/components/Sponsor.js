@@ -33,7 +33,7 @@ const Sponsor = () => {
 
   const handleKakaoSend = () => {
     window.open(
-      sponsorTarget == "JHyun"
+      sponsorTarget === "JHyun"
         ? "https://qr.kakaopay.com/Ej8NFl3qZ"
         : "https://qr.kakaopay.com/Ej8Xim5JJ",
       "_blank"
@@ -44,7 +44,7 @@ const Sponsor = () => {
   const handleCopyAccount = () => {
     navigator.clipboard
       .writeText(
-        sponsorTarget == "JHyun"
+        sponsorTarget === "JHyun"
           ? "신한은행 110-320-955821"
           : "신한은행 110-521-384822"
       )
@@ -142,7 +142,7 @@ const Sponsor = () => {
           }}
         >
           <Typography sx={{ fontFamily: "OwnglyphMeetme", fontSize: 18 }}>
-            {sponsorTarget == "JHyun"
+            {sponsorTarget === "JHyun"
               ? "🤵🏻 재현 축복하기 🎉"
               : "👰🏻 다경 응원하기 🎉"}
           </Typography>
@@ -211,7 +211,7 @@ const Sponsor = () => {
                 <Typography
                   sx={{ fontFamily: "KyoboHandwriting", fontSize: 10 }}
                 >
-                  {sponsorTarget == "JHyun"
+                  {sponsorTarget === "JHyun"
                     ? "(신한 110-320-955821)"
                     : "(신한 110-521-384822)"}
                 </Typography>
