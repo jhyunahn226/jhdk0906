@@ -1,9 +1,52 @@
-import { Container, IconButton, Box, Typography } from "@mui/material";
+import React, { useState } from "react";
+import {
+  Container,
+  IconButton,
+  Box,
+  Typography,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import Spacer from "./Spacer";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Sponsor = () => {
-  const handleShinchanClick = () => {
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const handleJHyunClick = () => {
+    setDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+  };
+
+  const handleTossSend = () => {
+    window.open("https://toss.me/jhyunahn", "_blank");
+    setDialogOpen(false);
+  };
+
+  const handleKakaoSend = () => {
     window.open("https://qr.kakaopay.com/Ej8NFl3qZ", "_blank");
+    setDialogOpen(false);
+  };
+
+  const handleCopyAccount = () => {
+    navigator.clipboard.writeText("신한은행 110-320-955821").then(() => {
+      toast.success("계좌번호가 복사되었습니다!", {
+        position: "bottom-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+      });
+    });
+    setDialogOpen(false);
   };
 
   const handleOlafClick = () => {
@@ -29,7 +72,7 @@ const Sponsor = () => {
         }}
       >
         <IconButton
-          onClick={handleShinchanClick}
+          onClick={handleJHyunClick}
           sx={{
             borderRadius: "50%",
             overflow: "hidden",
@@ -81,6 +124,142 @@ const Sponsor = () => {
           다경 응원하기
         </Typography>
       </Box>
+
+      <Dialog open={dialogOpen} onClose={handleCloseDialog}>
+        <DialogContent>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                width: "100%",
+                cursor: "pointer",
+                border: "0.5px solid black",
+                borderRadius: "4px",
+                padding: "12px",
+              }}
+              onClick={handleTossSend}
+            >
+              <Box
+                component="img"
+                src={`${process.env.PUBLIC_URL}/icons/toss.png`}
+                sx={{
+                  width: "24px",
+                }}
+              />
+              <Spacer m={1} />
+              <Typography sx={{ fontFamily: "KyoboHandwriting", fontSize: 16 }}>
+                '토스' 하기
+              </Typography>
+            </Box>
+            <Spacer m={1} />
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                width: "100%",
+                cursor: "pointer",
+                border: "0.5px solid black",
+                borderRadius: "4px",
+                padding: "12px",
+              }}
+              onClick={handleKakaoSend}
+            >
+              <Box
+                component="img"
+                src={`${process.env.PUBLIC_URL}/icons/kakao-yellow.png`}
+                sx={{
+                  width: "24px",
+                }}
+              />
+              <Spacer m={1} />
+              <Typography sx={{ fontFamily: "KyoboHandwriting", fontSize: 16 }}>
+                카카오 송금하기
+              </Typography>
+            </Box>
+            <Spacer m={1} />
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                width: "100%",
+                cursor: "pointer",
+                border: "0.5px solid black",
+                borderRadius: "4px",
+                padding: "12px",
+              }}
+              onClick={handleCopyAccount}
+            >
+              <Box
+                component="img"
+                src={`${process.env.PUBLIC_URL}/icons/shinhan.png`}
+                sx={{
+                  width: "24px",
+                }}
+              />
+              <Spacer m={1} />
+              <Box>
+                <Typography
+                  sx={{ fontFamily: "KyoboHandwriting", fontSize: 16 }}
+                >
+                  계좌번호 복사하기
+                </Typography>
+                <Typography
+                  sx={{ fontFamily: "KyoboHandwriting", fontSize: 10 }}
+                >
+                  (신한 110-320-955821)
+                </Typography>
+              </Box>
+            </Box>
+            <Spacer m={1} />
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                cursor: "pointer",
+                padding: "6px",
+              }}
+              onClick={handleCloseDialog}
+            >
+              <Typography
+                sx={{
+                  fontFamily: "KyoboHandwriting",
+                  fontSize: 12,
+                  color: "gray",
+                }}
+              >
+                마음만으로 충분해요
+              </Typography>
+              <Spacer m={0.4} />
+              <CloseIcon sx={{ fontSize: 14, color: "gray" }} />
+            </Box>
+          </Box>
+        </DialogContent>
+      </Dialog>
+      <ToastContainer
+        toastClassName="custom-toast"
+        bodyClassName="custom-toast-body"
+      />
+      <style jsx global>{`
+        .custom-toast {
+          font-family: "KyoboHandwriting", sans-serif;
+          font-size: 16px;
+        }
+        .custom-toast-body {
+          font-family: "KyoboHandwriting", sans-serif;
+          font-size: 16px;
+        }
+      `}</style>
     </Container>
   );
 };
