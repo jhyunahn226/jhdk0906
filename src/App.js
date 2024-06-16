@@ -162,7 +162,10 @@ const App = () => {
       />
       <Spacer m={1} />
       <Typography sx={{ fontFamily: "OwnglyphMeetme", fontSize: 24 }}>
-        GALLERY
+        📸 정말 힘들게 고른 💍
+      </Typography>
+      <Typography sx={{ fontFamily: "OwnglyphMeetme", fontSize: 24 }}>
+        43장의 사진들
       </Typography>
       <Spacer m={1} />
       <ImageGrid
