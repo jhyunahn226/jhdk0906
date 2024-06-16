@@ -1,6 +1,6 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
-import { Box, Container, Divider, Typography } from "@mui/material";
+import React, { useState, useEffect, useRef } from "react";
+import { Box, Container, Divider, Typography, IconButton } from "@mui/material";
 import { Player } from "@lottiefiles/react-lottie-player";
 import Spacer from "components/Spacer";
 import ImageModal from "components/ImageModal";
@@ -13,6 +13,8 @@ import Page3 from "components/Page3";
 import Page4 from "components/Page4";
 import Footer from "components/Footer";
 import Sponsor from "components/Sponsor";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 
 const App = () => {
   const [photos, setPhotos] = useState([]);
@@ -21,6 +23,11 @@ const App = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentSectionPhotos, setCurrentSectionPhotos] = useState([]);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showGuide, setShowGuide] = useState(false);
+  const audioRef = useRef(
+    new Audio(`${process.env.PUBLIC_URL}/musics/insummer.mp3`)
+  );
 
   useEffect(() => {
     const fetchPhotos = async () => {
@@ -31,9 +38,17 @@ const App = () => {
         setPhotos(data);
       }
       setLoading(false);
+      setShowGuide(true);
+      setTimeout(() => {
+        setShowGuide(false);
+      }, 4000);
     };
 
     fetchPhotos();
+  }, []);
+
+  useEffect(() => {
+    audioRef.current.loop = true; // 음악을 무한 반복 재생
   }, []);
 
   const handleImageClick = (image, index, sectionPhotos) => {
@@ -80,6 +95,15 @@ const App = () => {
     }
   };
 
+  const handleMusicToggle = () => {
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
   if (loading) {
     return (
       <Container
@@ -116,6 +140,66 @@ const App = () => {
         padding: 0,
       }}
     >
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-end",
+          position: "fixed",
+          top: 16,
+          right: 16,
+          zIndex: 1000,
+        }}
+      >
+        <IconButton
+          onClick={handleMusicToggle}
+          sx={{
+            backgroundColor: "rgba(255,255,255,0.4)",
+            borderRadius: "50%",
+            boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+            color: "black",
+            "&:hover": {
+              backgroundColor: "rgba(255,255,255,0.4)",
+            },
+          }}
+        >
+          {isPlaying ? <VolumeUpIcon /> : <VolumeOffIcon />}
+        </IconButton>
+        {showGuide && (
+          <Box
+            sx={{
+              mt: 1,
+              px: 2,
+              py: 1,
+              backgroundColor: "rgba(0, 0, 0, 0.8)",
+              borderRadius: "10px 0 10px 10px",
+              display: "flex",
+              direction: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Box
+              component="img"
+              src={`${process.env.PUBLIC_URL}/images/olaf_face.png`}
+              sx={{
+                width: "20px",
+                height: "auto",
+              }}
+            />
+            <Spacer m={0.5} />
+            <Typography
+              sx={{
+                fontFamily: "KyoboHandwriting",
+                fontSize: 14,
+                color: "white",
+              }}
+            >
+              누르면 기분이 좋아질 거에요! ▲
+            </Typography>
+          </Box>
+        )}
+      </Box>
       <Box
         component="img"
         src={`${process.env.PUBLIC_URL}/images/main.jpg`}

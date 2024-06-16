@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 import Spacer from "./Spacer";
 
 const Page1 = () => {
@@ -11,6 +11,16 @@ const Page1 = () => {
         my: 1,
       }}
     >
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Divider
+          sx={{
+            backgroundColor: "black",
+            width: "50px",
+            height: "0.5px",
+          }}
+        />
+      </Box>
+      <Spacer m={2} />
       <Typography
         variant="h5"
         sx={{ fontFamily: "OwnglyphMeetme", textAlign: "center" }}
