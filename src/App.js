@@ -62,6 +62,24 @@ const App = () => {
     setCurrentIndex(newIndex);
   };
 
+  const handleLikeClick = async (e, photo) => {
+    e.stopPropagation(); // 클릭 이벤트가 부모에게 전달되지 않도록 막음
+    const newLikes = photo.likes + 1;
+    const { error } = await supabase
+      .from("photoInfos")
+      .update({ likes: newLikes })
+      .eq("id", photo.id);
+    if (error) {
+      console.error("Error updating likes:", error);
+    } else {
+      setPhotos((prevPhotos) =>
+        prevPhotos.map((p) =>
+          p.id === photo.id ? { ...p, likes: newLikes } : p
+        )
+      );
+    }
+  };
+
   if (loading) {
     return (
       <Container
@@ -112,6 +130,7 @@ const App = () => {
       <ImageCarousel
         photos={section1Photos}
         handleImageClick={handleImageClick}
+        handleLikeClick={handleLikeClick}
         section={section1Photos}
       />
       <Spacer m={3} />
@@ -120,6 +139,7 @@ const App = () => {
       <ImageCarousel
         photos={section2Photos}
         handleImageClick={handleImageClick}
+        handleLikeClick={handleLikeClick}
         section={section2Photos}
       />
       <Spacer m={3} />
@@ -128,6 +148,7 @@ const App = () => {
       <ImageCarousel
         photos={section3Photos}
         handleImageClick={handleImageClick}
+        handleLikeClick={handleLikeClick}
         section={section3Photos}
       />
       <Spacer m={3} />
