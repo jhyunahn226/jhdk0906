@@ -154,7 +154,7 @@ const App = () => {
       <Spacer m={3} />
       <Page4 />
 
-      <Spacer m={4} />
+      <Spacer m={6} />
 
       <Divider
         sx={{
@@ -173,7 +173,7 @@ const App = () => {
       <Spacer m={1} />
       <Sponsor />
 
-      <Spacer m={4} />
+      <Spacer m={6} />
 
       <Divider
         sx={{

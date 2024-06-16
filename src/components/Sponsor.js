@@ -6,7 +6,6 @@ import {
   Typography,
   Dialog,
   DialogContent,
-  DialogTitle,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import Spacer from "./Spacer";
@@ -21,11 +20,6 @@ const Sponsor = () => {
   };
 
   const handleCloseDialog = () => {
-    setDialogOpen(false);
-  };
-
-  const handleTossSend = () => {
-    window.open("https://toss.me/jhyunahn", "_blank");
     setDialogOpen(false);
   };
 
@@ -126,7 +120,7 @@ const Sponsor = () => {
       </Box>
 
       <Dialog open={dialogOpen} onClose={handleCloseDialog}>
-        <DialogContent>
+        <DialogContent sx={{ padding: 4 }}>
           <Box
             sx={{
               display: "flex",
@@ -134,32 +128,6 @@ const Sponsor = () => {
               alignItems: "center",
             }}
           >
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                width: "100%",
-                cursor: "pointer",
-                border: "0.5px solid black",
-                borderRadius: "4px",
-                padding: "12px",
-              }}
-              onClick={handleTossSend}
-            >
-              <Box
-                component="img"
-                src={`${process.env.PUBLIC_URL}/icons/toss.png`}
-                sx={{
-                  width: "24px",
-                }}
-              />
-              <Spacer m={1} />
-              <Typography sx={{ fontFamily: "KyoboHandwriting", fontSize: 16 }}>
-                '토스' 하기
-              </Typography>
-            </Box>
-            <Spacer m={1} />
             <Box
               sx={{
                 display: "flex",
@@ -234,14 +202,14 @@ const Sponsor = () => {
               <Typography
                 sx={{
                   fontFamily: "KyoboHandwriting",
-                  fontSize: 12,
+                  fontSize: 14,
                   color: "gray",
                 }}
               >
                 마음만으로 충분해요
               </Typography>
               <Spacer m={0.4} />
-              <CloseIcon sx={{ fontSize: 14, color: "gray" }} />
+              <CloseIcon sx={{ fontSize: 18, color: "gray" }} />
             </Box>
           </Box>
         </DialogContent>

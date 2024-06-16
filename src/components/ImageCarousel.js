@@ -1,6 +1,8 @@
 import React from "react";
 import { Box, IconButton, Typography } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
@@ -13,10 +15,63 @@ const ImageCarousel = ({
   return (
     <Carousel
       showStatus={false}
-      showThumbs={false}
+      showThumbs={true}
+      showIndicators={false}
       infiniteLoop
       autoPlay
       interval={3000}
+      renderArrowPrev={(clickHandler, hasPrev) => {
+        return (
+          <IconButton
+            sx={{
+              position: "absolute",
+              left: 10,
+              top: "50%",
+              transform: "translateY(-50%)",
+              zIndex: 1,
+              backgroundColor: "transparent",
+              color: "white",
+              "&:hover": {
+                backgroundColor: "transparent",
+              },
+              svg: {
+                filter: "drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5))",
+                stroke: "black",
+                strokeWidth: "0.2px",
+              },
+            }}
+            onClick={clickHandler}
+          >
+            <ArrowBackIosNewIcon />
+          </IconButton>
+        );
+      }}
+      renderArrowNext={(clickHandler, hasNext) => {
+        return (
+          <IconButton
+            sx={{
+              position: "absolute",
+              right: 10,
+              top: "50%",
+              transform: "translateY(-50%)",
+              zIndex: 1,
+              backgroundColor: "transparent",
+              color: "white",
+              "&:hover": {
+                backgroundColor: "transparent",
+              },
+              svg: {
+                filter: "drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5))",
+                stroke: "black",
+                strokeWidth: "0.2px",
+              },
+            }}
+            onClick={clickHandler}
+          >
+            <ArrowForwardIosIcon />
+          </IconButton>
+        );
+      }}
     >
       {photos.map((photo, index) => (
         <Box
