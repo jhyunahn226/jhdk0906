@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { Box, CircularProgress, Container, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
+import { Player } from "@lottiefiles/react-lottie-player";
 import Spacer from "components/Spacer";
 import ImageModal from "components/ImageModal";
 import ImageCarousel from "components/ImageCarousel";
@@ -70,8 +71,12 @@ const App = () => {
           minHeight: "100vh",
         }}
       >
-        <CircularProgress />
-        <Spacer m={2} />
+        <Player
+          autoplay
+          loop
+          src={`${process.env.PUBLIC_URL}/lotties/loading.json`}
+          style={{ height: "200px", width: "200px" }}
+        />
         <Typography>Loading...</Typography>
       </Container>
     );
