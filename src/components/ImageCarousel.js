@@ -14,6 +14,10 @@ const ImageCarousel = ({
 }) => {
   return (
     <Carousel
+      sx={{
+        maxWidth: "100%", // 최대 너비를 100%로 설정하여 부모 컨테이너를 초과하지 않도록 함
+        width: "100%", // 전체 너비를 100%로 설정
+      }}
       showStatus={false}
       showThumbs={true}
       showIndicators={false}

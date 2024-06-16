@@ -6,6 +6,7 @@ import {
   Typography,
   Dialog,
   DialogContent,
+  DialogTitle,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import Spacer from "./Spacer";
@@ -13,9 +14,16 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Sponsor = () => {
+  const [sponsorTarget, setSponsorTarget] = useState("JHyun");
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleJHyunClick = () => {
+    setSponsorTarget("JHyun");
+    setDialogOpen(true);
+  };
+
+  const handleDAKommClick = () => {
+    setSponsorTarget("DAKomm");
     setDialogOpen(true);
   };
 
@@ -24,28 +32,34 @@ const Sponsor = () => {
   };
 
   const handleKakaoSend = () => {
-    window.open("https://qr.kakaopay.com/Ej8NFl3qZ", "_blank");
+    window.open(
+      sponsorTarget == "JHyun"
+        ? "https://qr.kakaopay.com/Ej8NFl3qZ"
+        : "https://qr.kakaopay.com/Ej8Xim5JJ",
+      "_blank"
+    );
     setDialogOpen(false);
   };
 
   const handleCopyAccount = () => {
-    navigator.clipboard.writeText("신한은행 110-320-955821").then(() => {
-      toast.success("계좌번호가 복사되었습니다!", {
-        position: "bottom-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        progress: undefined,
+    navigator.clipboard
+      .writeText(
+        sponsorTarget == "JHyun"
+          ? "신한은행 110-320-955821"
+          : "신한은행 110-521-384822"
+      )
+      .then(() => {
+        toast.success("계좌번호가 복사되었습니다!", {
+          position: "bottom-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+        });
       });
-    });
     setDialogOpen(false);
-  };
-
-  const handleOlafClick = () => {
-    console.log("Olaf GIF clicked");
-    // 여기에서 Olaf 버튼 클릭 시 실행할 코드를 작성하세요
   };
 
   return (
@@ -96,7 +110,7 @@ const Sponsor = () => {
         }}
       >
         <IconButton
-          onClick={handleOlafClick}
+          onClick={handleDAKommClick}
           sx={{
             borderRadius: "50%",
             overflow: "hidden",
@@ -120,6 +134,19 @@ const Sponsor = () => {
       </Box>
 
       <Dialog open={dialogOpen} onClose={handleCloseDialog}>
+        <DialogTitle
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            margin: 1,
+          }}
+        >
+          <Typography sx={{ fontFamily: "OwnglyphMeetme", fontSize: 18 }}>
+            {sponsorTarget == "JHyun"
+              ? "🤵🏻 재현 축복하기 🎉"
+              : "👰🏻 다경 응원하기 🎉"}
+          </Typography>
+        </DialogTitle>
         <DialogContent sx={{ padding: 4 }}>
           <Box
             sx={{
@@ -184,7 +211,9 @@ const Sponsor = () => {
                 <Typography
                   sx={{ fontFamily: "KyoboHandwriting", fontSize: 10 }}
                 >
-                  (신한 110-320-955821)
+                  {sponsorTarget == "JHyun"
+                    ? "(신한 110-320-955821)"
+                    : "(신한 110-521-384822)"}
                 </Typography>
               </Box>
             </Box>
