@@ -1,4 +1,3 @@
-// src/components/Page1.js
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import Spacer from "./Spacer";
@@ -46,7 +45,10 @@ const Page1 = () => {
       <Spacer m={1.5} />
       <Typography variant="body1" sx={{ fontFamily: "KyoboHandwriting" }}>
         그리고 무엇보다도... 결혼식을 하면 저희는 분명 오열하느라 식이 제대로
-        진행되지 않을거에요. (상상만 해도 울컥한 걸 보면 확실해요)
+        진행되지 않을거에요.{" "}
+        <span style={{ color: "gray" }}>
+          (상상만 해도 울컥한 걸 보면 확실해요)
+        </span>
       </Typography>
       <Spacer m={1.5} />
       <Typography variant="body1" sx={{ fontFamily: "KyoboHandwriting" }}>

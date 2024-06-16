@@ -10,8 +10,11 @@ const ImageGrid = ({ photos, handleImageClick }) => {
       cols={3}
       gap={1}
     >
-      {photos.map((photo) => (
-        <ImageListItem key={photo.id} onClick={() => handleImageClick(photo)}>
+      {photos.map((photo, index) => (
+        <ImageListItem
+          key={photo.id}
+          onClick={() => handleImageClick(photo, index)}
+        >
           <Box
             sx={{
               position: "relative",
@@ -20,7 +23,7 @@ const ImageGrid = ({ photos, handleImageClick }) => {
             }}
           >
             <img
-              src={photo.url}
+              src={`${process.env.PUBLIC_URL}/photos/${photo.url}`}
               alt={photo.description}
               loading="lazy"
               style={{

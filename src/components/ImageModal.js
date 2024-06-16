@@ -9,20 +9,34 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-const ImageModal = ({ open, onClose, image }) => {
+const ImageModal = ({
+  open,
+  onClose,
+  image,
+  photos,
+  currentIndex,
+  handlePrev,
+  handleNext,
+}) => {
   return (
     <Dialog open={open} onClose={onClose} maxWidth="lg" fullWidth>
       <DialogTitle
         sx={{
           display: "flex",
-          justifyContent: "flex-end",
+          justifyContent: "space-between",
           alignItems: "center",
           padding: 0,
+          paddingLeft: 2,
           paddingRight: 2,
           minHeight: "unset",
         }}
       >
+        <Typography sx={{ fontFamily: "KyoboHandwriting" }}>
+          {currentIndex + 1} / {photos.length}
+        </Typography>
         <IconButton
           edge="end"
           color="inherit"
@@ -40,8 +54,53 @@ const ImageModal = ({ open, onClose, image }) => {
             alignItems: "center",
             padding: 0,
             width: "100%",
+            position: "relative",
           }}
         >
+          <IconButton
+            sx={{
+              position: "absolute",
+              left: 10,
+              top: "50%",
+              transform: "translateY(-50%)",
+              zIndex: 1,
+              backgroundColor: "transparent",
+              color: "white",
+              "&:hover": {
+                backgroundColor: "transparent",
+              },
+              svg: {
+                filter: "drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5))",
+                stroke: "black",
+                strokeWidth: "0.2px",
+              },
+            }}
+            onClick={handlePrev}
+          >
+            <ArrowBackIosNewIcon />
+          </IconButton>
+          <IconButton
+            sx={{
+              position: "absolute",
+              right: 10,
+              top: "50%",
+              transform: "translateY(-50%)",
+              zIndex: 1,
+              backgroundColor: "transparent",
+              color: "white",
+              "&:hover": {
+                backgroundColor: "transparent",
+              },
+              svg: {
+                filter: "drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5))",
+                stroke: "black",
+                strokeWidth: "0.2px",
+              },
+            }}
+            onClick={handleNext}
+          >
+            <ArrowForwardIosIcon />
+          </IconButton>
           <Box
             sx={{
               width: "100%",
@@ -49,7 +108,7 @@ const ImageModal = ({ open, onClose, image }) => {
             }}
           >
             <img
-              src={image.url}
+              src={`${process.env.PUBLIC_URL}/photos/${image.url}`}
               alt={image.description}
               style={{
                 width: "100%",
