@@ -36,7 +36,7 @@ const Page4 = () => {
       <Typography variant="body1" sx={{ fontFamily: "KyoboHandwriting" }}>
         저희, 예쁘게 잘 살게요!
       </Typography>
-      <Spacer m={1.5} />
+      <Spacer m={2} />
       <Container
         sx={{
           width: "100%",
@@ -51,7 +51,7 @@ const Page4 = () => {
             src={`${process.env.PUBLIC_URL}/images/shinchan_olaf.png`}
             sx={{
               width: "50%",
-              //   height: "auto",
+              height: "auto",
             }}
           />
         </Container>
@@ -63,10 +63,16 @@ const Page4 = () => {
             alignItems: "flex-end",
           }}
         >
-          <Typography variant="body1" sx={{ fontFamily: "KyoboHandwriting" }}>
+          <Typography
+            variant="body1"
+            sx={{ fontFamily: "KyoboHandwriting", fontSize: 14 }}
+          >
             2024.09.06~
           </Typography>
-          <Typography variant="body1" sx={{ fontFamily: "KyoboHandwriting" }}>
+          <Typography
+            variant="body1"
+            sx={{ fontFamily: "KyoboHandwriting", fontSize: 14 }}
+          >
             김다경 & 안재현 드림
           </Typography>
         </Container>
