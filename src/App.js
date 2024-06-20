@@ -222,7 +222,7 @@ const App = () => {
         handleLikeClick={handleLikeClick}
         section={section1Photos}
       />
-      <Spacer m={3} />
+      <Spacer m={2} />
       <Page2 />
       <Spacer m={3} />
       <ImageCarousel
@@ -231,7 +231,7 @@ const App = () => {
         handleLikeClick={handleLikeClick}
         section={section2Photos}
       />
-      <Spacer m={3} />
+      <Spacer m={2} />
       <Page3 />
       <Spacer m={3} />
       <ImageCarousel
@@ -276,7 +276,7 @@ const App = () => {
         📸 정말 힘들게 고른 💍
       </Typography>
       <Typography sx={{ fontFamily: "OwnglyphMeetme", fontSize: 24 }}>
-        43장의 사진들
+        45장의 사진들
       </Typography>
       <Spacer m={1} />
       <ImageGrid

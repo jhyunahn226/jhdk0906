@@ -52,6 +52,7 @@ const Page4 = () => {
             sx={{
               width: "50%",
               height: "auto",
+              aspectRatio: "897/768",
             }}
           />
         </Container>

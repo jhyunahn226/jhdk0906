@@ -101,7 +101,7 @@ const Sponsor = () => {
           재현 축복하기
         </Typography>
       </Box>
-      <Spacer m={4} />
+      <Spacer m={3} />
       <Box
         sx={{
           display: "flex",
