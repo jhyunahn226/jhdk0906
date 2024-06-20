@@ -7,7 +7,7 @@ const Page2 = () => {
     <Box
       sx={{
         textAlign: "left",
-        mx: 2,
+        mx: 4,
         my: 1,
       }}
     >
