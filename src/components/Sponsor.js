@@ -180,7 +180,7 @@ const Sponsor = () => {
                 카카오 송금하기
               </Typography>
             </Box>
-            <Spacer m={1} />
+            <Spacer m={1.4} />
             <Box
               sx={{
                 display: "flex",
