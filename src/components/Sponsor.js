@@ -68,7 +68,6 @@ const Sponsor = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        gap: 4, // 버튼 간의 간격
         padding: 2,
       }}
     >
@@ -102,6 +101,7 @@ const Sponsor = () => {
           재현 축복하기
         </Typography>
       </Box>
+      <Spacer m={4} />
       <Box
         sx={{
           display: "flex",
