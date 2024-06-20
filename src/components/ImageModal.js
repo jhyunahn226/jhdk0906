@@ -151,8 +151,6 @@ const ImageModal = ({
             justifyContent: "space-between",
             width: "100%",
             padding: 0,
-            marginLeft: 4,
-            marginRight: 4,
           }}
         >
           <Box sx={{ display: "flex", direction: "row", alignItems: "center" }}>

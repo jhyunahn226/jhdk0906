@@ -50,7 +50,7 @@ const Page4 = () => {
             component="img"
             src={`${process.env.PUBLIC_URL}/images/shinchan_olaf.png`}
             sx={{
-              width: "50%",
+              width: "60%",
               height: "auto",
               aspectRatio: "897/768",
             }}
